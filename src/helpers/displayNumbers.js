@@ -9,3 +9,7 @@ export const displayBuildingCost = (cost) => {
 export const displayScore = (score) => {
   return Math.round(score).toLocaleString("en-US");
 };
+
+export const displayPower = (power) => {
+  return Math.round(power).toLocaleString("en-US");
+};

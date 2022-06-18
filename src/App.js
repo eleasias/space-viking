@@ -37,6 +37,14 @@ function App() {
           score: state.score - action.cost,
           power: state.power + action.power,
         };
+      case "loadGame":
+        // console.log("loadGame triggered ", action);
+        return {
+          ...state,
+          score: action.score,
+          power: action.power,
+          buuildings: action.buildings,
+        };
       default:
         return { ...state };
     }
@@ -50,7 +58,7 @@ function App() {
     let tick = setInterval(() => {
       console.log("tick started");
       dispatch({ type: "updateScore" });
-    }, 100);
+    }, 50);
     return () => {
       console.log("cleaning tick");
       clearInterval(tick);
@@ -64,6 +72,19 @@ function App() {
     setIsMenuVisible(!isMenuVisible);
   };
 
+  const handleSaveClick = () => {
+    localStorage.setItem("saved-game", JSON.stringify(state));
+    // console.log("game saved!");
+  };
+  const handleLoadClick = () => {
+    const savedGame = JSON.parse(localStorage.getItem("saved-game"));
+    dispatch({
+      type: "loadGame",
+      ...savedGame,
+    });
+    // console.log("game loaded! ", savedGame);
+  };
+
   return (
     <div className="App">
       {isMenuVisible && <Modal closeModal={modalToggler} />}
@@ -71,12 +92,27 @@ function App() {
         <div className="flex items-center justify-center">
           <div class="bg-white shadow-xl rounded-lg ">
             <Title />
+            <button
+              onClick={handleSaveClick}
+              class="w-60 rounded text-white font-bold p-4 bg-blue-800 mb-4"
+              type="button"
+            >
+              Save
+            </button>
+
             <BuildingList
               state={state}
               dispatch={dispatch}
               buildingList={state.buildings}
               score={state.score}
             ></BuildingList>
+            <button
+              onClick={handleLoadClick}
+              class="w-60 rounded text-white font-bold p-4 bg-blue-800 mb-4"
+              type="button"
+            >
+              Load
+            </button>
             <Scoreboard state={state} dispatch={dispatch} />
             <button
               onClick={modalToggler}

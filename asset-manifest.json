@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/space-viking/static/css/main.12ab1edf.css",
-    "main.js": "/space-viking/static/js/main.fd9c8611.js",
-    "static/js/787.c4f11e00.chunk.js": "/space-viking/static/js/787.c4f11e00.chunk.js",
-    "index.html": "/space-viking/index.html",
-    "main.12ab1edf.css.map": "/space-viking/static/css/main.12ab1edf.css.map",
-    "main.fd9c8611.js.map": "/space-viking/static/js/main.fd9c8611.js.map",
-    "787.c4f11e00.chunk.js.map": "/space-viking/static/js/787.c4f11e00.chunk.js.map"
+    "main.css": "/static/css/main.12ab1edf.css",
+    "main.js": "/static/js/main.a0c65f6f.js",
+    "static/js/787.7ab34a7c.chunk.js": "/static/js/787.7ab34a7c.chunk.js",
+    "index.html": "/index.html",
+    "main.12ab1edf.css.map": "/static/css/main.12ab1edf.css.map",
+    "main.a0c65f6f.js.map": "/static/js/main.a0c65f6f.js.map",
+    "787.7ab34a7c.chunk.js.map": "/static/js/787.7ab34a7c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.12ab1edf.css",
-    "static/js/main.fd9c8611.js"
+    "static/js/main.a0c65f6f.js"
   ]
 }

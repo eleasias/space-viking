@@ -7,12 +7,12 @@ import {
 const Building = (props) => {
   const buildingCost = displayBuildingCost(props.cost);
   const conditionalBackground =
-    props.score < props.cost ? "bg-red-900" : "bg-blue-900";
-  const conditionalHoverBackground =
-    props.score < props.cost ? "hover:bg-red-800" : "hover:bg-green-800";
+    props.score < props.cost
+      ? "bg-red-900 text-white"
+      : "text-white bg-slate-600";
   return (
     <button
-      className={` w-60 rounded text-white font-bold  p-4 ${conditionalBackground}`}
+      className={`rounded min-w-full p-2 mb-2 font-bold ${conditionalBackground}`}
       onClick={() => {
         props.onClick(props.power, props.cost, props.index);
       }}

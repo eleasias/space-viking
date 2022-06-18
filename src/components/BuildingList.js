@@ -15,10 +15,9 @@ const BuildingList = (props) => {
 
   const buildingList = tempBuildingArray.map((building, index) => {
     return (
-      <div className="pb-4">
+      <div key={building.name} className="">
         <Building
           {...building}
-          key={building.name}
           onClick={powerHandler}
           index={index}
           score={props.score}
@@ -26,7 +25,7 @@ const BuildingList = (props) => {
       </div>
     );
   });
-  return <div className="">{buildingList}</div>;
+  return <div className="justify-center m-5 rounded ">{buildingList}</div>;
 };
 
 export default BuildingList;

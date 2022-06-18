@@ -10,12 +10,8 @@ import Scoreboard from "./components/Scoreboard/Scoreboard";
 function App() {
   //Initialise data
   const savedGame = JSON.parse(localStorage.getItem("saved-game"));
-  let initiateState = {};
-  if (savedGame.score > 0) {
-    initiateState = { ...savedGame };
-  } else {
-    initiateState = { score: 0, power: 1, buildings: [...buildings] };
-  }
+
+  const initiateState = { score: 0, power: 1, buildings: [...buildings] };
 
   function reducer(state, action) {
     switch (action.type) {
@@ -50,7 +46,7 @@ function App() {
           ...state,
           score: action.score,
           power: action.power,
-          buuildings: action.buildings,
+          buildings: action.buildings,
         };
       default:
         return { ...state };
@@ -93,8 +89,39 @@ function App() {
 
   return (
     <div className="App">
-      {isMenuVisible && <Modal closeModal={modalToggler} />}
-      <div className="max-w-7xl ">
+      <div className="flex justify-center bg-slate-400">
+        <div className="bg-slate-100 min-h-screen md:min-w-[50%] min-w-[100%] flex justify-center">
+          <div className="bg-slate-900 m-5 min-w-[90%] rounded-lg shadow-lg ">
+            <Title />
+            <div className="justify-center">
+              <button
+                onClick={saveGame}
+                className="m-2 p-3 bg-blue-900 text-white min-w-[60%] rounded "
+                type="button"
+              >
+                Save
+              </button>
+              <button
+                onClick={loadGame}
+                className="m-2 p-3 bg-red-900 text-white min-w-[60%] rounded"
+                type="button"
+              >
+                Load
+              </button>
+            </div>
+            <BuildingList
+              state={state}
+              dispatch={dispatch}
+              buildingList={state.buildings}
+              score={state.score}
+            ></BuildingList>
+            <Scoreboard state={state} dispatch={dispatch} />
+          </div>
+        </div>
+      </div>
+
+      {/* {isMenuVisible && <Modal closeModal={modalToggler} />}
+      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl ">
         <div className="flex items-center justify-center">
           <div class="bg-white shadow-xl rounded-lg ">
             <Title />
@@ -129,7 +156,7 @@ function App() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -8,7 +8,14 @@ import Title from "./components/Title";
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 
 function App() {
-  const initiateState = { score: 0, power: 1, buildings: [...buildings] };
+  //Initialise data
+  const savedGame = JSON.parse(localStorage.getItem("saved-game"));
+  let initiateState = {};
+  if (savedGame.score > 0) {
+    initiateState = { ...savedGame };
+  } else {
+    initiateState = { score: 0, power: 1, buildings: [...buildings] };
+  }
 
   function reducer(state, action) {
     switch (action.type) {
@@ -72,12 +79,11 @@ function App() {
     setIsMenuVisible(!isMenuVisible);
   };
 
-  const handleSaveClick = () => {
+  const saveGame = () => {
     localStorage.setItem("saved-game", JSON.stringify(state));
     // console.log("game saved!");
   };
-  const handleLoadClick = () => {
-    const savedGame = JSON.parse(localStorage.getItem("saved-game"));
+  const loadGame = () => {
     dispatch({
       type: "loadGame",
       ...savedGame,
@@ -93,7 +99,7 @@ function App() {
           <div class="bg-white shadow-xl rounded-lg ">
             <Title />
             <button
-              onClick={handleSaveClick}
+              onClick={saveGame}
               class="w-60 rounded text-white font-bold p-4 bg-blue-800 mb-4"
               type="button"
             >
@@ -107,7 +113,7 @@ function App() {
               score={state.score}
             ></BuildingList>
             <button
-              onClick={handleLoadClick}
+              onClick={loadGame}
               class="w-60 rounded text-white font-bold p-4 bg-blue-800 mb-4"
               type="button"
             >

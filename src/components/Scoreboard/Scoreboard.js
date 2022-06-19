@@ -3,7 +3,7 @@ import Counter from "./Counter";
 
 const Scoreboard = (props) => {
   return (
-    <div className="bg-slate-600 font-bold text-white border-slate-900 border p-4 mb-4 mr-4 ml-4 rounded">
+    <div className="bg-slate-800 p-5 text-white flex flex-col gap-1 mx-5 rounded">
       <Counter score={props.state.score} power={props.state.power}></Counter>
     </div>
   );

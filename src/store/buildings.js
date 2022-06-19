@@ -5,6 +5,22 @@ const buildings = [
     cost: 1,
     costIncrement: 1.1,
     buildingCount: 0,
+    powerups: [
+      {
+        name: "Powerup 1",
+        type: "multiplyPower",
+        value: 2,
+        enabled: true,
+        cost: 100,
+      },
+      {
+        name: "Powerup 2",
+        type: "multiplyPower",
+        value: 2,
+        enabled: false,
+        cost: 1000,
+      },
+    ],
   },
   {
     name: "Building 2",
@@ -12,6 +28,22 @@ const buildings = [
     cost: 100,
     costIncrement: 1.1,
     buildingCount: 0,
+    powerups: [
+      {
+        name: "Powerup 1",
+        type: "multiplyPower",
+        value: 2,
+        enabled: false,
+        cost: 100,
+      },
+      {
+        name: "Powerup 2",
+        type: "multiplyPower",
+        value: 2,
+        enabled: false,
+        cost: 1000,
+      },
+    ],
   },
   {
     name: "Building 3",
@@ -19,6 +51,22 @@ const buildings = [
     cost: 300,
     costIncrement: 1.1,
     buildingCount: 0,
+    powerups: [
+      {
+        name: "Powerup 1",
+        type: "multiplyPower",
+        value: 2,
+        enabled: false,
+        cost: 100,
+      },
+      {
+        name: "Powerup 2",
+        type: "multiplyPower",
+        value: 2,
+        enabled: false,
+        cost: 1000,
+      },
+    ],
   },
   {
     name: "Building 4",
@@ -26,6 +74,22 @@ const buildings = [
     cost: 3000,
     costIncrement: 1.3,
     buildingCount: 0,
+    powerups: [
+      {
+        name: "Powerup 1",
+        type: "multiplyPower",
+        value: 2,
+        enabled: false,
+        cost: 100,
+      },
+      {
+        name: "Powerup 2",
+        type: "multiplyPower",
+        value: 2,
+        enabled: false,
+        cost: 1000,
+      },
+    ],
   },
   {
     name: "Building 5",
@@ -33,6 +97,22 @@ const buildings = [
     cost: 20000,
     costIncrement: 1.4,
     buildingCount: 0,
+    powerups: [
+      {
+        name: "Powerup 1",
+        type: "multiplyPower",
+        value: 2,
+        enabled: true,
+        cost: 100,
+      },
+      {
+        name: "Powerup 2",
+        type: "multiplyPower",
+        value: 2,
+        enabled: false,
+        cost: 1000,
+      },
+    ],
   },
 ];
 

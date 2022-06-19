@@ -1,14 +1,14 @@
 import React from "react";
-import { displayScore, displayPower } from "../../helpers/displayNumbers";
+import { bigNumberFormatter } from "../../helpers/displayNumbers";
 
 const Counter = (props) => {
-  const score = displayScore(props.score);
-  const power = displayPower(props.power);
+  const score = bigNumberFormatter(props.score);
+  const power = bigNumberFormatter(props.power);
   return (
-    <div>
-      <h2>Your current score is {score}</h2>
-      <h2>Your current power is {power}</h2>
-    </div>
+    <React.Fragment>
+      <h2 className="font-bold text-2xl">{score}</h2>
+      <h2>{power} per tick</h2>
+    </React.Fragment>
   );
 };
 

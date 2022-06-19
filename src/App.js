@@ -89,74 +89,49 @@ function App() {
 
   return (
     <div className="App">
-      <div className="flex justify-center bg-slate-400">
-        <div className="bg-slate-100 min-h-screen md:min-w-[50%] min-w-[100%] flex justify-center">
-          <div className="bg-slate-900 m-5 min-w-[90%] rounded-lg shadow-lg ">
-            <Title />
-            <div className="justify-center">
-              <button
-                onClick={saveGame}
-                className="m-2 p-3 bg-blue-900 text-white min-w-[60%] rounded "
-                type="button"
-              >
-                Save
-              </button>
-              <button
-                onClick={loadGame}
-                className="m-2 p-3 bg-red-900 text-white min-w-[60%] rounded"
-                type="button"
-              >
-                Load
-              </button>
-            </div>
-            <BuildingList
-              state={state}
-              dispatch={dispatch}
-              buildingList={state.buildings}
-              score={state.score}
-            ></BuildingList>
-            <Scoreboard state={state} dispatch={dispatch} />
-          </div>
-        </div>
-      </div>
-
-      {/* {isMenuVisible && <Modal closeModal={modalToggler} />}
-      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl ">
-        <div className="flex items-center justify-center">
-          <div class="bg-white shadow-xl rounded-lg ">
-            <Title />
+      {isMenuVisible && (
+        <Modal
+          modalToggler={modalToggler}
+          buildingList={state.buildings}
+          score={state.score}
+        />
+      )}
+      <div className="bg-slate-500  p-5  h-full ">
+        <div className="bg-slate-900 border border-slate-900 rounded-lg shadow-lg grid grid-cols-1 grid-rows-[100px] gap-5 ">
+          <Title />
+          <button
+            onClick={modalToggler}
+            className="bg-blue-800 p-5 font-bold text-white mx-5 mb-5 rounded content-center"
+            type="button"
+          >
+            Powerups
+          </button>
+          <div className="px-5 flex gap-5">
             <button
               onClick={saveGame}
-              class="w-60 rounded text-white font-bold p-4 bg-blue-800 mb-4"
+              className="p-3 basis-1/2 bg-blue-900 text-white  rounded "
               type="button"
             >
               Save
             </button>
 
-            <BuildingList
-              state={state}
-              dispatch={dispatch}
-              buildingList={state.buildings}
-              score={state.score}
-            ></BuildingList>
             <button
               onClick={loadGame}
-              class="w-60 rounded text-white font-bold p-4 bg-blue-800 mb-4"
+              className="p-3 basis-1/2 bg-red-900 text-white rounded"
               type="button"
             >
               Load
             </button>
-            <Scoreboard state={state} dispatch={dispatch} />
-            <button
-              onClick={modalToggler}
-              class="w-60 rounded text-white font-bold p-4 bg-blue-800 mb-4"
-              type="button"
-            >
-              Powerups
-            </button>
           </div>
+          <Scoreboard state={state} dispatch={dispatch} />
+          <BuildingList
+            state={state}
+            dispatch={dispatch}
+            buildingList={state.buildings}
+            score={state.score}
+          ></BuildingList>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

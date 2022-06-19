@@ -15,7 +15,7 @@ const BuildingList = (props) => {
 
   const buildingList = tempBuildingArray.map((building, index) => {
     return (
-      <div key={building.name} className="">
+      <div key={building.name}>
         <Building
           {...building}
           onClick={powerHandler}
@@ -25,7 +25,11 @@ const BuildingList = (props) => {
       </div>
     );
   });
-  return <div className="justify-center m-5 rounded ">{buildingList}</div>;
+  return (
+    <div className="rounded px-5 flex flex-col flex-wrap gap-2">
+      {buildingList}
+    </div>
+  );
 };
 
 export default BuildingList;

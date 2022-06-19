@@ -1,23 +1,24 @@
 import React from "react";
-import {
-  displayBuildingCost,
-  displayBuildingPower,
-} from "../helpers/displayNumbers";
+import { bigNumberFormatter } from "../helpers/displayNumbers";
 
 const Building = (props) => {
-  const buildingCost = displayBuildingCost(props.cost);
+  const buildingCost = bigNumberFormatter(props.cost);
   const conditionalBackground =
     props.score < props.cost
-      ? "bg-red-900 text-white"
+      ? "bg-slate-800 text-slate-400"
       : "text-white bg-slate-600";
   return (
     <button
-      className={`rounded min-w-full p-2 mb-2 font-bold ${conditionalBackground}`}
+      className={`rounded grid-cols-2 grid-flow-row min-w-full p-2 grid grid-rows-2  ${conditionalBackground}`}
       onClick={() => {
         props.onClick(props.power, props.cost, props.index);
       }}
     >
-      {props.name} : {buildingCost} ({props.buildingCount})
+      <span className="text-left inline-block  font-bold">{props.name}</span>
+      <span className=" text-right inline-block 0">x{props.buildingCount}</span>
+
+      <span className="text-left inline-block ">{buildingCost} </span>
+      <span className=" text-right inline-block 0">{props.power} pps</span>
     </button>
   );
 };

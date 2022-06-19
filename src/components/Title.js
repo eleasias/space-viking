@@ -4,11 +4,9 @@ import { faBuildingCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Title = () => {
   return (
-    <div className="m-5 p-5 bg-slate-800 rounded">
-      <h1 className="text-white text-3xl font-bold">
-        <FontAwesomeIcon icon={faBuildingCircleCheck} className="mr-2" />
-        Building builder
-      </h1>
+    <div className="bg-slate-800 rounded py-5 flex text-white text-3xl gap-2 font-bold items-center justify-center">
+      <FontAwesomeIcon icon={faBuildingCircleCheck} />
+      <h1>Building builder</h1>
     </div>
   );
 };

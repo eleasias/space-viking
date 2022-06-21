@@ -12,7 +12,6 @@ export function gameManager(state, action) {
         cost: purchasedBuilding.cost * purchasedBuilding.costIncrement,
         buildingCount: purchasedBuilding.buildingCount + 1,
       };
-      console.log(updatedBuilding);
       const newBuildingList = state.buildings.map((building, index) => {
         if (index === action.index) {
           return { ...updatedBuilding };
@@ -26,12 +25,16 @@ export function gameManager(state, action) {
         power: state.power + action.power,
       };
     case "loadGame":
-      // console.log("loadGame triggered ", action);
       return {
         ...state,
         score: action.score,
         power: action.power,
         buildings: action.buildings,
+      };
+    case "clickBuilding":
+      return {
+        ...state,
+        score: state.score + state.power,
       };
     default:
       return { ...state };

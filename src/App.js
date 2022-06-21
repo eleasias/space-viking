@@ -7,13 +7,12 @@ import Modal from "./components/Modal";
 import Title from "./components/Title";
 import Scoreboard from "./components/Scoreboard/Scoreboard";
 import { gameManager } from "./reducers/gameManager";
+import Button from "./components/UI/Button";
 
 function App() {
   //Initialise data
   const savedGame = JSON.parse(localStorage.getItem("saved-game"));
-
   const initiateState = { score: 0, power: 1, buildings: [...buildings] };
-
   const [state, dispatch] = useReducer(gameManager, initiateState);
 
   // Set up time loop
@@ -60,29 +59,26 @@ function App() {
       <div className="bg-slate-500  p-5  h-full ">
         <div className="bg-slate-900 border border-slate-900 rounded-lg shadow-lg grid grid-cols-1 grid-rows-[100px] gap-5 ">
           <Title />
-          <button
+          <Button
             onClick={modalToggler}
             className="bg-blue-800 p-5 font-bold text-white mx-5 mb-5 rounded content-center"
-            type="button"
           >
             Powerups
-          </button>
+          </Button>
           <div className="px-5 flex gap-5">
-            <button
+            <Button
               onClick={saveGame}
               className="p-3 basis-1/2 bg-blue-900 text-white  rounded "
-              type="button"
             >
               Save
-            </button>
+            </Button>
 
-            <button
+            <Button
               onClick={loadGame}
               className="p-3 basis-1/2 bg-red-900 text-white rounded"
-              type="button"
             >
               Load
-            </button>
+            </Button>
           </div>
           <Scoreboard state={state} dispatch={dispatch} />
           <BuildingList

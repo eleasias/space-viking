@@ -23,13 +23,15 @@ export function gameManager(state, action) {
         buildings: [...newBuildingList],
         score: state.score - action.cost,
         power: state.power + action.power,
+        playerMessage: "Building purchased",
       };
     case "loadGame":
       return {
         ...state,
         score: action.score,
         power: action.power,
-        buildings: action.buildings,
+        buildings: [...action.buildings],
+        playerMessage: "Game Loaded",
       };
     case "clickBuilding":
       console.log("score building clicked");

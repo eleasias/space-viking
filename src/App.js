@@ -13,6 +13,7 @@ function App() {
   //Initialise data
   const savedGame = JSON.parse(localStorage.getItem("saved-game"));
   const initiateState = { score: 0, power: 1, buildings: [...buildings] };
+  console.log(initiateState);
   const [state, dispatch] = useReducer(gameManager, initiateState);
 
   // Set up time loop
@@ -40,6 +41,9 @@ function App() {
     // console.log("game saved!");
   };
   const loadGame = () => {
+    if (savedGame == null) {
+      return;
+    }
     dispatch({
       type: "loadGame",
       ...savedGame,
@@ -58,7 +62,7 @@ function App() {
       )}
       <div className="bg-slate-500  p-5  h-full ">
         <div className="bg-slate-900 border border-slate-900 rounded-lg shadow-lg grid grid-cols-1 grid-rows-[100px] gap-5 ">
-          <Title />
+          <Title message={state.playerMessage} />
           <Button
             onClick={modalToggler}
             className="bg-blue-800 p-5 font-bold text-white mx-5 mb-5 rounded content-center"

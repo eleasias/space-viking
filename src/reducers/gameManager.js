@@ -32,6 +32,7 @@ export function gameManager(state, action) {
         buildings: action.buildings,
       };
     case "clickBuilding":
+      console.log("score building clicked");
       return {
         ...state,
         score: state.score + state.power,

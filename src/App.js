@@ -21,7 +21,7 @@ function App() {
     let tick = setInterval(() => {
       console.log("tick started");
       dispatch({ type: "updateScore" });
-    }, 50);
+    }, 1000);
     return () => {
       console.log("cleaning tick");
       clearInterval(tick);

@@ -2,18 +2,18 @@ import "./App.css";
 
 import BuildingList from "./components/BuildingList";
 import { useEffect, useReducer, useState } from "react";
-import buildings from "./store/buildings";
 import Modal from "./components/Modal";
 import Title from "./components/Title";
 import Scoreboard from "./components/Scoreboard/Scoreboard";
-import { gameManager } from "./reducers/gameManager";
 import Button from "./components/UI/Button";
+import buildings from "./store/buildings";
+import { gameManager } from "./reducers/gameManager";
 
 function App() {
-  //Initialise data
   const savedGame = JSON.parse(localStorage.getItem("saved-game"));
   const initiateState = { score: 0, power: 1, buildings: [...buildings] };
-  console.log(initiateState);
+  const [tickTime, setTickTime] = useState(1000);
+
   const [state, dispatch] = useReducer(gameManager, initiateState);
 
   // Set up time loop
@@ -22,12 +22,12 @@ function App() {
     let tick = setInterval(() => {
       console.log("tick started");
       dispatch({ type: "updateScore" });
-    }, 1000);
+    }, tickTime);
     return () => {
       console.log("cleaning tick");
       clearInterval(tick);
     };
-  }, []);
+  }, [tickTime]);
 
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
@@ -36,9 +36,18 @@ function App() {
     setIsMenuVisible(!isMenuVisible);
   };
 
+  const debug = () => {
+    setTickTime(100);
+    console.log("Changing tick");
+    const timer = setInterval(() => {
+      console.log("Changing tick back");
+      setTickTime(1000);
+      clearInterval(timer);
+    }, 5000);
+  };
+
   const saveGame = () => {
     localStorage.setItem("saved-game", JSON.stringify(state));
-    // console.log("game saved!");
   };
   const loadGame = () => {
     if (savedGame == null) {
@@ -53,6 +62,12 @@ function App() {
 
   return (
     <div className="App">
+      <Button
+        onClick={debug}
+        className="p-3 basis-1/2 bg-blue-900 text-white  rounded "
+      >
+        Debug
+      </Button>
       {isMenuVisible && (
         <Modal
           modalToggler={modalToggler}
